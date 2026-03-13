@@ -1,0 +1,245 @@
+{%- comment -%} Affiliate / Ambassador signup form. Uses Shopify contact form. Social + Message combined into body. {%- endcomment -%}
+<section class="affiliate-ambassador page-width" id="affiliate-ambassador-{{ section.id }}">
+  <div class="affiliate-ambassador__inner">
+    {% if section.settings.show_heading %}
+      <h1 class="affiliate-ambassador__title">{{ section.settings.heading | default: 'Affiliate Program' }}</h1>
+    {% endif %}
+    {% if section.settings.intro != blank %}
+      <p class="affiliate-ambassador__intro">{{ section.settings.intro }}</p>
+    {% endif %}
+
+    {% form 'contact', id: 'affiliate-ambassador-form', class: 'affiliate-ambassador__form', data_affiliate_form: '' %}
+      {% if form.posted_successfully? %}
+        <p class="affiliate-ambassador__success">{{ section.settings.success_message | default: 'Thank you! Your application has been submitted.' }}</p>
+      {% else %}
+        {% if form.errors %}
+          <p class="affiliate-ambassador__error">{{ form.errors | default_errors }}</p>
+        {% endif %}
+
+        <div class="affiliate-ambassador__fields">
+          <div class="affiliate-ambassador__field">
+            <label for="affiliate-name-{{ section.id }}">{{ section.settings.label_name | default: 'Full Name' }} <span class="required">*</span></label>
+            <input type="text" id="affiliate-name-{{ section.id }}" name="contact[name]" required placeholder="{{ section.settings.placeholder_name | default: 'Your name' }}" value="{{ form.name }}" autocomplete="name">
+          </div>
+          <div class="affiliate-ambassador__field">
+            <label for="affiliate-email-{{ section.id }}">{{ section.settings.label_email | default: 'Email' }} <span class="required">*</span></label>
+            <input type="email" id="affiliate-email-{{ section.id }}" name="contact[email]" required placeholder="{{ section.settings.placeholder_email | default: 'your@email.com' }}" value="{{ form.email }}" autocomplete="email">
+          </div>
+          <div class="affiliate-ambassador__field">
+            <label for="affiliate-phone-{{ section.id }}">{{ section.settings.label_phone | default: 'Phone Number' }} <span class="required">*</span></label>
+            <input type="tel" id="affiliate-phone-{{ section.id }}" name="contact[phone]" required placeholder="{{ section.settings.placeholder_phone | default: 'Your phone number' }}" value="{{ form.phone }}" autocomplete="tel">
+          </div>
+
+          <div class="affiliate-ambassador__field affiliate-ambassador__social-group">
+            <span class="affiliate-ambassador__field-label">{{ section.settings.label_social | default: 'Social Media Handles' }}</span>
+            <div class="affiliate-ambassador__social-fields">
+              <div class="affiliate-ambassador__field affiliate-ambassador__field--inline">
+                <label for="affiliate-instagram-{{ section.id }}">Instagram</label>
+                <input type="text" id="affiliate-instagram-{{ section.id }}" data-affiliate-social="instagram" placeholder="@handle" autocomplete="off">
+              </div>
+              <div class="affiliate-ambassador__field affiliate-ambassador__field--inline">
+                <label for="affiliate-tiktok-{{ section.id }}">TikTok</label>
+                <input type="text" id="affiliate-tiktok-{{ section.id }}" data-affiliate-social="tiktok" placeholder="@handle" autocomplete="off">
+              </div>
+              <div class="affiliate-ambassador__field affiliate-ambassador__field--inline">
+                <label for="affiliate-youtube-{{ section.id }}">YouTube</label>
+                <input type="text" id="affiliate-youtube-{{ section.id }}" data-affiliate-social="youtube" placeholder="Channel or URL" autocomplete="off">
+              </div>
+              <div class="affiliate-ambassador__field affiliate-ambassador__field--inline">
+                <label for="affiliate-other-social-{{ section.id }}">{{ section.settings.label_other_social | default: 'Other' }}</label>
+                <input type="text" id="affiliate-other-social-{{ section.id }}" data-affiliate-social="other" placeholder="{{ section.settings.placeholder_other_social | default: '@handle or profile URL' }}" autocomplete="off">
+              </div>
+            </div>
+          </div>
+
+          <div class="affiliate-ambassador__field">
+            <label for="affiliate-message-{{ section.id }}">{{ section.settings.label_message | default: 'Message' }} <span class="required">*</span></label>
+            <textarea id="affiliate-message-{{ section.id }}" data-affiliate-message required placeholder="{{ section.settings.placeholder_message | default: 'Tell us about yourself and why you want to join...' }}" rows="5">{{ form.body }}</textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="contact[body]" value="" data-affiliate-body>
+        <input type="hidden" name="contact[tags]" value="affiliate-ambassador">
+
+        <button type="submit" class="affiliate-ambassador__submit">
+          {{ section.settings.button_text | default: 'Submit Application' }}
+        </button>
+      {% endif %}
+    {% endform %}
+
+    {% if section.settings.subtext != blank %}
+      <p class="affiliate-ambassador__subtext">{{ section.settings.subtext }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.affiliate-ambassador { padding: 64px 24px 80px; }
+.affiliate-ambassador__inner { max-width: 520px; margin: 0 auto; }
+.affiliate-ambassador__title { font-size: 12px; letter-spacing: 0.25em; font-weight: var(--font-weight-medium); margin: 0 0 24px; }
+.affiliate-ambassador__intro { font-size: 11px; color: #666; line-height: 1.8; text-transform: none; margin: 0 0 32px; }
+.affiliate-ambassador__fields { margin-bottom: 24px; }
+.affiliate-ambassador__field { margin-bottom: 20px; }
+.affiliate-ambassador__field label,
+.affiliate-ambassador__field-label { display: block; font-size: 10px; letter-spacing: 0.2em; color: #666; margin-bottom: 6px; }
+.affiliate-ambassador__field .required { color: #999; }
+.affiliate-ambassador__field input,
+.affiliate-ambassador__field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-family: inherit;
+  text-transform: none;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-sizing: border-box;
+}
+.affiliate-ambassador__field input:focus,
+.affiliate-ambassador__field textarea:focus {
+  outline: none;
+  border-color: #181818;
+}
+.affiliate-ambassador__field textarea { resize: vertical; min-height: 120px; }
+.affiliate-ambassador__social-group { margin-bottom: 24px; }
+.affiliate-ambassador__social-fields { display: flex; flex-direction: column; gap: 12px; }
+.affiliate-ambassador__field--inline { margin-bottom: 0; }
+.affiliate-ambassador__submit {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 24px;
+  background: #181818;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: inherit;
+  transition: background 0.2s;
+}
+.affiliate-ambassador__submit:hover { background: #333; }
+.affiliate-ambassador__success { font-size: 12px; color: #333; padding: 24px 0; }
+.affiliate-ambassador__error { font-size: 11px; color: #c00; margin-bottom: 16px; }
+.affiliate-ambassador__subtext { font-size: 10px; color: #999; line-height: 1.7; text-transform: none; margin: 24px 0 0; }
+@media (min-width: 768px) {
+  .affiliate-ambassador { padding: 80px 0 96px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Affiliate / Ambassador",
+  "tag": "section",
+  "class": "section-affiliate-ambassador",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Affiliate Program"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext / note (below form)"
+    },
+    {
+      "type": "header",
+      "content": "Form labels"
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Full name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "label_social",
+      "label": "Social media label",
+      "default": "Social Media Handles"
+    },
+    {
+      "type": "text",
+      "id": "label_other_social",
+      "label": "Other social label",
+      "default": "Other"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message label",
+      "default": "Message"
+    },
+    {
+      "type": "header",
+      "content": "Placeholders"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_phone",
+      "label": "Phone placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_other_social",
+      "label": "Other social placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message placeholder"
+    },
+    {
+      "type": "header",
+      "content": "Button & success"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit button text",
+      "default": "Submit Application"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! Your application has been submitted."
+    }
+  ]
+}
+{% endschema %}

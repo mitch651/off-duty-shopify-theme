@@ -1,0 +1,150 @@
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid{% if section.settings.instagram != blank %} footer__grid--two-col{% endif %}">
+      <div class="footer__column footer__links-column">
+        <ul class="footer__links">
+          {% if section.settings.shipping_url != blank %}
+            <li><a href="{{ section.settings.shipping_url }}">Shipping Policy</a></li>
+          {% else %}
+            <li><a href="{{ routes.root_url }}policies/shipping-policy">Shipping Policy</a></li>
+          {% endif %}
+          {% if section.settings.returns_url != blank %}
+            <li><a href="{{ section.settings.returns_url }}">Returns Policy</a></li>
+          {% else %}
+            <li><a href="{{ routes.root_url }}policies/refund-policy">Returns Policy</a></li>
+          {% endif %}
+          {% if section.settings.privacy_url != blank %}
+            <li><a href="{{ section.settings.privacy_url }}">Privacy Policy</a></li>
+          {% else %}
+            <li><a href="{{ routes.root_url }}policies/privacy-policy">Privacy Policy</a></li>
+          {% endif %}
+          {% if section.settings.terms_url != blank %}
+            <li><a href="{{ section.settings.terms_url }}">Terms &amp; Conditions</a></li>
+          {% else %}
+            <li><a href="{{ routes.root_url }}policies/terms-of-service">Terms &amp; Conditions</a></li>
+          {% endif %}
+          {% if section.settings.about_url != blank %}
+            <li><a href="{{ section.settings.about_url }}">About Us</a></li>
+          {% else %}
+            <li><a href="/pages/about">About Us</a></li>
+          {% endif %}
+          {% if section.settings.contact_url != blank %}
+            <li><a href="{{ section.settings.contact_url }}">Contact</a></li>
+          {% else %}
+            <li><a href="/pages/contact">Contact</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      {% if section.settings.instagram != blank %}
+        <div class="footer__column footer__instagram">
+          <p class="footer__label">{{ section.settings.instagram_heading | default: 'Follow Us' }}</p>
+          <a href="{{ section.settings.instagram }}" class="footer__instagram-link" target="_blank" rel="noopener">@{{ section.settings.instagram_handle | default: 'Instagram' }}</a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">© {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_text }}</p>
+      <div class="footer__social">
+        {% if section.settings.instagram != blank %}
+          <a href="{{ section.settings.instagram }}" class="footer__social-link">Instagram</a>
+        {% endif %}
+        {% if section.settings.twitter != blank %}
+          <a href="{{ section.settings.twitter }}" class="footer__social-link">Twitter</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.designer_credit != blank %}
+      <p class="footer__designer">{{ section.settings.designer_credit }}</p>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter text",
+      "default": "Join for early access and 10% off your first order."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button",
+      "label": "Newsletter button",
+      "default": "Subscribe"
+    },
+    {
+      "type": "url",
+      "id": "shipping_url",
+      "label": "Shipping Policy URL"
+    },
+    {
+      "type": "url",
+      "id": "returns_url",
+      "label": "Returns Policy URL"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy Policy URL"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms & Conditions URL"
+    },
+    {
+      "type": "url",
+      "id": "about_url",
+      "label": "About Us URL"
+    },
+    {
+      "type": "url",
+      "id": "contact_url",
+      "label": "Contact URL"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "instagram_handle",
+      "label": "Instagram handle (e.g. offduty)",
+      "info": "Shown as @handle in Follow Us link"
+    },
+    {
+      "type": "text",
+      "id": "instagram_heading",
+      "label": "Instagram section heading",
+      "default": "Follow Us"
+    },
+    {
+      "type": "url",
+      "id": "twitter",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "text",
+      "id": "designer_credit",
+      "label": "Designer credit",
+      "default": "Designed by MLC"
+    }
+  ]
+}
+{% endschema %}

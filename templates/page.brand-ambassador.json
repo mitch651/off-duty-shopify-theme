@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "off-duty-brand-ambassador",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

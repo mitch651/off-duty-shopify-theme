@@ -1,0 +1,27 @@
+<div class="page-width" style="padding: 48px 0;">
+  <h1 class="search__title" style="font-size: 12px; letter-spacing: 0.25em; margin: 0 0 32px;">{{ 'general.search.title' | t | default: 'Search' }}</h1>
+  <form action="{{ routes.search_url }}" method="get" class="search__form" style="margin-bottom: 32px;">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t | default: 'Search...' }}" style="padding: 12px 16px; font-size: 12px; width: 100%; max-width: 400px;">
+    <button type="submit" style="margin-top: 12px; padding: 12px 24px; font-size: 11px; letter-spacing: 0.15em;">{{ 'general.search.submit' | t | default: 'Search' }}</button>
+  </form>
+  {% if search.performed %}
+    {% if search.results_count > 0 %}
+      <div class="search__results" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px;">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% render 'product-card', product: item %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="font-size: 12px; color: #666;">{{ 'general.search.no_results' | t | default: 'No results found.' }}</p>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

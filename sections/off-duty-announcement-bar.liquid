@@ -1,0 +1,79 @@
+{% if section.settings.enable %}
+<div class="announcement-bar" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; font-size: {{ section.settings.font_size }}px;">
+  <div class="announcement-bar__inner">
+    {% for block in section.blocks %}
+      {% if block.type == 'text' %}
+        <span class="announcement-bar__item">{{ block.settings.text }}</span>
+        {% unless forloop.last %}<span class="announcement-bar__separator">{{ section.settings.separator }}</span>{% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% for block in section.blocks %}
+      {% if block.type == 'text' %}
+        <span class="announcement-bar__item">{{ block.settings.text }}</span>
+        {% unless forloop.last %}<span class="announcement-bar__separator">{{ section.settings.separator }}</span>{% endunless %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#181818"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "•"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Edit here"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {"type": "text", "settings": {"text": "Edit here"}}
+    ]
+  }
+}
+{% endschema %}

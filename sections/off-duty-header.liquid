@@ -1,0 +1,239 @@
+<header
+  class="header{% if section.settings.logo_image != blank %} has-logo-image{% endif %}{% if section.settings.logo_image_top != blank %} has-logo-image-top{% endif %}"
+  id="off-duty-header"
+  style="
+    --header-opacity-top: {{ section.settings.header_opacity_top | divided_by: 100.0 }};
+    --header-opacity-scrolled: {{ section.settings.header_opacity_scrolled | divided_by: 100.0 }};
+  "
+>
+  <div class="header__inner page-width">
+    <button type="button" class="header__menu-btn" aria-label="Open menu" data-menu-toggle>
+      <span class="header__menu-icon" aria-hidden="true">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </span>
+    </button>
+    <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
+      <span class="header__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+      {% if section.settings.logo_image_top != blank %}
+        <img
+          class="header__logo-img header__logo-img--top"
+          src="{{ section.settings.logo_image_top | image_url: width: 240 }}"
+          alt="{{ section.settings.logo_image_top.alt | default: shop.name }}"
+          loading="eager"
+          width="240"
+          height="{{ 240 | divided_by: section.settings.logo_image_top.aspect_ratio | round }}"
+        >
+      {% endif %}
+      {% if section.settings.logo_image != blank %}
+        <img
+          class="header__logo-img header__logo-img--scrolled"
+          src="{{ section.settings.logo_image | image_url: width: 240 }}"
+          alt="{{ section.settings.logo_image.alt | default: shop.name }}"
+          loading="lazy"
+          width="240"
+          height="{{ 240 | divided_by: section.settings.logo_image.aspect_ratio | round }}"
+        >
+      {% endif %}
+    </a>
+    <nav class="header__nav" aria-label="Main">
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="header__nav-link">{{ link.title }}</a>
+        {% endfor %}
+      {% endif %}
+    </nav>
+    <div class="header__actions">
+      <a href="{{ routes.search_url }}" class="header__action header__search header__search--desktop" aria-label="Search">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="8"/>
+          <path stroke-linecap="round" d="M21 21l-4.35-4.35"/>
+        </svg>
+      </a>
+      <a href="{{ routes.cart_url }}" class="header__action header__cart">
+        <span class="header__cart-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="header__cart-count">({{ cart.item_count }})</span>
+      </a>
+    </div>
+  </div>
+
+  {%- comment -%} Full-screen menu overlay {%- endcomment -%}
+  <div class="header__menu-overlay" id="header-menu-overlay" aria-hidden="true" data-menu-close>
+    <div class="header__menu-backdrop" data-menu-close aria-hidden="true"></div>
+    <div class="header__menu-content">
+      <div class="header__menu-top">
+        <button type="button" class="header__menu-close" aria-label="Close menu" data-menu-close>
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/>
+          </svg>
+        </button>
+        <span class="header__menu-logo"></span>
+        <div class="header__menu-actions">
+          <a href="{{ routes.search_url }}" class="header__menu-action" aria-label="Search">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8"/>
+              <path stroke-linecap="round" d="M21 21l-4.35-4.35"/>
+            </svg>
+          </a>
+          <a href="{{ routes.cart_url }}" class="header__menu-action header__menu-cart">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="header__menu-location">
+        <p>{{ section.settings.location_text | default: 'Los Angeles, CA' }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ 'now' | date: '%B %d, %Y' }}</p>
+      </div>
+
+      <nav class="header__menu-nav" aria-label="Main menu">
+        <ul class="header__menu-nav-list">
+          {% if section.settings.menu != blank %}
+            {% for link in section.settings.menu.links %}
+              <li>
+                <a href="{{ link.url }}" class="header__menu-nav-link" data-menu-close>{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+          <li>
+            <a href="{{ routes.account_url }}" class="header__menu-nav-link" data-menu-close>Account</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__menu-bottom">
+        <div class="header__menu-signup">
+          {% form 'customer', id: 'menu-newsletter-form', class: 'header__menu-signup-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input
+              type="email"
+              name="contact[email]"
+              class="header__menu-signup-input"
+              placeholder="Enter your email"
+              autocomplete="email"
+            >
+            <button type="submit" class="header__menu-signup-btn">Subscribe</button>
+          {% endform %}
+          <p class="header__menu-signup-note">
+            By providing your email address, you agree to our <a href="{{ section.settings.privacy_policy_url | default: '#' }}">Privacy Policy</a>.
+          </p>
+        </div>
+        <ul class="header__menu-footer-links">
+          {% if section.settings.link_client_services != blank %}
+            <li><a href="{{ section.settings.link_client_services }}" class="header__menu-footer-link">Client Services</a></li>
+          {% endif %}
+          {% if section.settings.link_legal != blank %}
+            <li><a href="{{ section.settings.link_legal }}" class="header__menu-footer-link">Legal &amp; Privacy</a></li>
+          {% endif %}
+          {% if section.settings.instagram_url != blank %}
+            <li><a href="{{ section.settings.instagram_url }}" class="header__menu-footer-link" target="_blank" rel="noopener">Instagram</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text (fallback when no top logo)",
+      "default": "Off Duty"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_top",
+      "label": "Logo image (at top of page)"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image (shown when scrolled)"
+    },
+    {
+      "type": "text",
+      "id": "location_text",
+      "label": "Location (in menu)",
+      "default": "Los Angeles, CA"
+    },
+    {
+      "type": "url",
+      "id": "privacy_policy_url",
+      "label": "Privacy policy URL (newsletter note)"
+    },
+    {
+      "type": "url",
+      "id": "link_client_services",
+      "label": "Client Services link"
+    },
+    {
+      "type": "url",
+      "id": "link_legal",
+      "label": "Legal & Privacy link"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "menu_label",
+      "label": "Mobile menu button",
+      "default": "Menu"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Close menu",
+      "default": "Close"
+    },
+    {
+      "type": "text",
+      "id": "search_label",
+      "label": "Search label",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "cart_label",
+      "label": "Cart label",
+      "default": "Cart"
+    },
+    {
+      "type": "range",
+      "id": "header_opacity_top",
+      "label": "Header opacity (top of page)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "header_opacity_scrolled",
+      "label": "Header opacity (when scrolled)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 95
+    }
+  ]
+}
+{% endschema %}

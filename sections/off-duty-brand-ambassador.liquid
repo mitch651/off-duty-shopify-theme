@@ -1,0 +1,185 @@
+{%- comment -%} Brand Ambassador application form. Uses Shopify contact form. {%- endcomment -%}
+<section class="brand-ambassador page-width">
+  <div class="brand-ambassador__inner">
+    {% if section.settings.show_heading %}
+      <h1 class="brand-ambassador__title">{{ section.settings.heading | default: 'Brand Ambassador' }}</h1>
+    {% endif %}
+    {% if section.settings.intro != blank %}
+      <p class="brand-ambassador__intro">{{ section.settings.intro }}</p>
+    {% endif %}
+
+    {% form 'contact', id: 'brand-ambassador-form', class: 'brand-ambassador__form' %}
+      {% if form.posted_successfully? %}
+        <p class="brand-ambassador__success">{{ section.settings.success_message | default: 'Thank you! Your application has been submitted.' }}</p>
+      {% else %}
+        {% if form.errors %}
+          <p class="brand-ambassador__error">{{ form.errors | default_errors }}</p>
+        {% endif %}
+
+        <div class="brand-ambassador__fields">
+          <div class="brand-ambassador__field">
+            <label for="brand-ambassador-name">{{ section.settings.label_name | default: 'Full Name' }} <span class="required">*</span></label>
+            <input type="text" id="brand-ambassador-name" name="contact[name]" required placeholder="{{ section.settings.placeholder_name | default: 'Your name' }}" value="{{ form.name }}">
+          </div>
+          <div class="brand-ambassador__field">
+            <label for="brand-ambassador-email">{{ section.settings.label_email | default: 'Email' }} <span class="required">*</span></label>
+            <input type="email" id="brand-ambassador-email" name="contact[email]" required placeholder="{{ section.settings.placeholder_email | default: 'your@email.com' }}" value="{{ form.email }}">
+          </div>
+          <div class="brand-ambassador__field">
+            <label for="brand-ambassador-social">{{ section.settings.label_social | default: 'Social Media' }}</label>
+            <input type="text" id="brand-ambassador-social" name="contact[phone]" placeholder="{{ section.settings.placeholder_social | default: '@handle or profile URL' }}" value="{{ form.phone }}">
+          </div>
+          <div class="brand-ambassador__field">
+            <label for="brand-ambassador-message">{{ section.settings.label_message | default: 'Message' }} <span class="required">*</span></label>
+            <textarea id="brand-ambassador-message" name="contact[body]" required placeholder="{{ section.settings.placeholder_message | default: 'Tell us about yourself...' }}" rows="5">{{ form.body }}</textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="contact[tags]" value="brand-ambassador">
+
+        <button type="submit" class="brand-ambassador__submit">
+          {{ section.settings.button_text | default: 'Submit Application' }}
+        </button>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+
+<style>
+.brand-ambassador { padding: 64px 0 80px; }
+.brand-ambassador__inner { max-width: 520px; margin: 0 auto; }
+.brand-ambassador__title { font-size: 12px; letter-spacing: 0.25em; font-weight: var(--font-weight-medium); margin: 0 0 24px; }
+.brand-ambassador__intro { font-size: 11px; color: #666; line-height: 1.8; text-transform: none; margin: 0 0 32px; }
+.brand-ambassador__form { }
+.brand-ambassador__fields { margin-bottom: 24px; }
+.brand-ambassador__field { margin-bottom: 20px; }
+.brand-ambassador__field label { display: block; font-size: 10px; letter-spacing: 0.2em; color: #666; margin-bottom: 6px; }
+.brand-ambassador__field .required { color: #999; }
+.brand-ambassador__field input,
+.brand-ambassador__field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-family: inherit;
+  text-transform: none;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.brand-ambassador__field input:focus,
+.brand-ambassador__field textarea:focus {
+  outline: none;
+  border-color: #181818;
+}
+.brand-ambassador__field textarea { resize: vertical; min-height: 120px; }
+.brand-ambassador__submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: #181818;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: inherit;
+  transition: background 0.2s;
+}
+.brand-ambassador__submit:hover { background: #333; }
+.brand-ambassador__success { font-size: 12px; color: #333; padding: 24px 0; }
+.brand-ambassador__error { font-size: 11px; color: #c00; margin-bottom: 16px; }
+</style>
+
+{% schema %}
+{
+  "name": "Brand Ambassador",
+  "tag": "section",
+  "class": "section-brand-ambassador",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Brand Ambassador"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text"
+    },
+    {
+      "type": "header",
+      "content": "Form labels"
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Full name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "label_social",
+      "label": "Social media label",
+      "default": "Social Media"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message label",
+      "default": "Message"
+    },
+    {
+      "type": "header",
+      "content": "Placeholders"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_social",
+      "label": "Social placeholder"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message placeholder"
+    },
+    {
+      "type": "header",
+      "content": "Button & success"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit button text",
+      "default": "Submit Application"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! Your application has been submitted."
+    }
+  ]
+}
+{% endschema %}

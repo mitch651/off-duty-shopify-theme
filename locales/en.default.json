@@ -1,0 +1,47 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_placeholder": "Password"
+    },
+    "newsletter_form": {
+      "email_placeholder": "Email"
+    },
+    "pagination": {
+      "page": "Page"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search...",
+      "submit": "Search",
+      "no_results": "No results found."
+    },
+    "404": {
+      "title": "Page not found",
+      "link": "Back to home"
+    }
+  },
+  "products": {
+    "shop": "Shop",
+    "add_to_cart": "Add to Bag",
+    "sold_out": "Sold Out",
+    "view_product": "View Product"
+  },
+  "collections": {
+    "all": "Shop All",
+    "products": "products",
+    "categories": "Categories",
+    "empty": "No products in this collection yet."
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "update": "Update",
+      "checkout": "Checkout",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping"
+    }
+  }
+}

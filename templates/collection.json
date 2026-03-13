@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "sidebar_heading": "Collections"
+      },
+      "blocks": {
+        "category_1": { "type": "category", "settings": { "heading": "T-Shirts" } },
+        "category_2": { "type": "category", "settings": { "heading": "Hoodies" } },
+        "category_3": { "type": "category", "settings": { "heading": "Sweatpants" } }
+      },
+      "block_order": ["category_1", "category_2", "category_3"]
+    }
+  },
+  "order": ["main"]
+}

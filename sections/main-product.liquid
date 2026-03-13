@@ -1,0 +1,331 @@
+{%- comment -%} Always-Works Setup: filter images by Color using Alt Text (e.g. "black | front", "gray | model"). {%- endcomment -%}
+{% assign color_option_index = 0 %}
+{% assign size_option_index = 0 %}
+{% for option in product.options_with_values %}
+  {% if option.name == 'Color' or option.name == 'Colour' %}
+    {% assign color_option_index = option.position %}
+  {% elsif option.name == 'Size' %}
+    {% assign size_option_index = option.position %}
+  {% endif %}
+{% endfor %}
+
+<div class="product-page page-width" data-color-option="{{ color_option_index }}" data-size-option="{{ size_option_index }}">
+  <div class="product-page__layout">
+    <div class="product-page__gallery">
+      <div class="product-page__main-image">
+        {% if product.images.size > 1 %}
+          <div class="product-page__main-carousel" id="product-main-carousel">
+            {% for image in product.images %}
+              {% assign alt_lc = image.alt | downcase %}
+              {% assign color_tag = alt_lc | split: '|' | first | strip %}
+              <div class="product-page__carousel-slide product-media-slide" data-src="{{ image | image_url: width: 800 }}" data-color="{{ color_tag }}" data-index="{{ forloop.index0 }}" data-image-id="{{ image.id }}">
+                <img src="{{ image | image_url: width: 800 }}" alt="{{ image.alt | default: product.title }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="800" height="1067">
+              </div>
+            {% endfor %}
+          </div>
+        {% elsif product.featured_image %}
+          <img
+            src="{{ product.featured_image | image_url: width: 800 }}"
+            alt="{{ product.featured_image.alt | default: product.title }}"
+            width="800"
+            height="1067"
+          >
+        {% else %}
+          <div class="product-page__placeholder" style="aspect-ratio: 3/4; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+        {% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="product-page__thumbs" id="product-thumbs">
+          {% for image in product.images %}
+            {% assign alt_lc = image.alt | downcase %}
+            {% assign color_tag = alt_lc | split: '|' | first | strip %}
+            <button type="button" class="product-page__thumb product-media-slide{% if forloop.first %} is-active{% endif %}" data-src="{{ image | image_url: width: 800 }}" data-color="{{ color_tag }}" data-index="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}">
+              <img src="{{ image | image_url: width: 150 }}" alt="{{ image.alt | default: product.title }}" width="80" height="106">
+            </button>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="product-page__thumbs" id="product-thumbs" style="display:none"></div>
+      {% endif %}
+    </div>
+    <div class="product-page__info">
+      <p class="product-page__breadcrumb">
+        <a href="{{ routes.collections_url }}">{{ 'products.shop' | t | default: 'Shop' }}</a>
+        <span>/</span>
+        <span>{{ product.type | default: product.vendor }}</span>
+      </p>
+      <h1 class="product-page__title">{{ product.title }}</h1>
+      <p class="product-page__price">{{ product.price | money }}</p>
+      {% form 'product', product, id: 'product-form', class: 'product-page__form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="variant-id">
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="product-page__option">
+              <p class="product-page__option-label">{{ option.name }} — <span class="product-page__option-value" data-option="{{ option.position }}">{{ option.selected_value }}</span></p>
+              <div class="product-page__options" data-option-position="{{ option.position }}" data-option-name="{{ option.name }}">
+                {% for value in option.values %}
+                  {% assign value_available = false %}
+                  {% if option.name == 'Color' or option.name == 'Colour' %}
+                    {% for v in product.variants %}
+                      {% if v.available %}
+                        {% if option.position == 1 and v.option1 == value %}
+                          {% assign value_available = true %}
+                        {% elsif option.position == 2 and v.option2 == value %}
+                          {% assign value_available = true %}
+                        {% elsif option.position == 3 and v.option3 == value %}
+                          {% assign value_available = true %}
+                        {% endif %}
+                        {% if value_available %}{% break %}{% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% else %}
+                    {% assign color_idx = color_option_index | minus: 1 %}
+                    {% assign selected_color = product.selected_or_first_available_variant.options[color_idx] | default: '' %}
+                    {% for v in product.variants %}
+                      {% if v.available %}
+                        {% assign color_matches = false %}
+                        {% if color_option_index == 1 and v.option1 == selected_color %}
+                          {% assign color_matches = true %}
+                        {% elsif color_option_index == 2 and v.option2 == selected_color %}
+                          {% assign color_matches = true %}
+                        {% elsif color_option_index == 3 and v.option3 == selected_color %}
+                          {% assign color_matches = true %}
+                        {% endif %}
+                        {% if color_option_index == 0 %}{% assign color_matches = true %}{% endif %}
+                        {% if color_matches %}
+                          {% if option.position == 1 and v.option1 == value %}
+                            {% assign value_available = true %}
+                          {% elsif option.position == 2 and v.option2 == value %}
+                            {% assign value_available = true %}
+                          {% elsif option.position == 3 and v.option3 == value %}
+                            {% assign value_available = true %}
+                          {% endif %}
+                        {% endif %}
+                        {% if value_available %}{% break %}{% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  {% if option.name == 'Color' or option.name == 'Colour' %}
+                      {% assign color_cleaned = value | remove: '#' | downcase | strip %}
+                      {% assign color_style = '' %}
+                      {% if color_cleaned.size == 6 and color_cleaned != blank %}
+                        {% assign color_style = '#' | append: color_cleaned %}
+                      {% elsif value contains '#' %}
+                        {% assign color_style = value %}
+                      {% else %}
+                        {% assign value_lc = value | downcase | strip %}
+                        {% case value_lc %}
+                          {% when 'black' %}{% assign color_style = '#000000' %}
+                          {% when 'white' %}{% assign color_style = '#ffffff' %}
+                          {% when 'gray', 'grey' %}{% assign color_style = '#808080' %}
+                          {% when 'navy' %}{% assign color_style = '#000080' %}
+                          {% when 'espresso', 'brown' %}{% assign color_style = '#4a3728' %}
+                          {% when 'beige', 'cream' %}{% assign color_style = '#f5f5dc' %}
+                          {% when 'tan' %}{% assign color_style = '#d2b48c' %}
+                          {% when 'burgundy', 'wine' %}{% assign color_style = '#800020' %}
+                          {% when 'olive' %}{% assign color_style = '#808000' %}
+                          {% when 'forest', 'forest green' %}{% assign color_style = '#228b22' %}
+                          {% when 'red' %}{% assign color_style = '#c00' %}
+                          {% when 'blue' %}{% assign color_style = '#0066cc' %}
+                          {% when 'green' %}{% assign color_style = '#228b22' %}
+                          {% when 'pink' %}{% assign color_style = '#ffc0cb' %}
+                          {% when 'gold' %}{% assign color_style = '#ffd700' %}
+                          {% when 'charcoal' %}{% assign color_style = '#36454f' %}
+                          {% else %}{% assign color_style = '#999999' %}
+                        {% endcase %}
+                      {% endif %}
+                      <button type="button" class="product-page__option-btn product-page__option-btn--color{% if option.selected_value == value %} is-active{% endif %}{% unless value_available %} is-sold-out{% endunless %}" data-option="{{ option.position }}" data-value="{{ value | escape }}" data-available="{{ value_available }}" style="background-color: {{ color_style }};" title="{{ value }}{% unless value_available %} (Sold out){% endunless %}"{% unless value_available %} disabled aria-label="{{ value }} - Sold out"{% endunless %}></button>
+                    {% else %}
+                      <button type="button" class="product-page__option-btn{% if option.selected_value == value %} is-active{% endif %}{% unless value_available %} is-sold-out{% endunless %}" data-option="{{ option.position }}" data-value="{{ value | escape }}" data-available="{{ value_available }}"{% unless value_available %} disabled aria-label="{{ value }} - Sold out"{% endunless %}><span class="product-page__option-btn-text">{% unless value_available %}– {% endunless %}{{ value }}{% unless value_available %} –{% endunless %}</span></button>
+                    {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+        <button type="submit" name="add" class="product-page__add" id="add-to-cart-btn" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+          {% if product.selected_or_first_available_variant.available %}{{ 'products.add_to_cart' | t | default: 'Add to Bag' }}{% else %}{{ 'products.sold_out' | t | default: 'Sold Out' }}{% endif %}
+        </button>
+        {% if product.description != blank %}
+          <div class="product-page__description">{{ product.description }}</div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var form = document.getElementById('product-form');
+  if (!form) return;
+  var variants = {{ product.variants | json }};
+  var mainCarousel = document.getElementById('product-main-carousel');
+  var thumbsContainer = document.getElementById('product-thumbs');
+  var colorOptionIndex = parseInt(form.closest('.product-page').dataset.colorOption || '0', 10);
+  var sizeOptionIndex = parseInt(form.closest('.product-page').dataset.sizeOption || '0', 10);
+
+  function getColorFromVariant(v) {
+    if (!colorOptionIndex) return '';
+    var opt = v['option' + colorOptionIndex];
+    return (opt || '').toLowerCase().trim();
+  }
+
+  function updateSizeAvailabilityForColor(selectedColor) {
+    if (!sizeOptionIndex) return;
+    var colorKey = (selectedColor || '').toLowerCase().trim();
+    var sizeOpts = form.querySelector('.product-page__options[data-option-position="' + sizeOptionIndex + '"]');
+    if (!sizeOpts) return;
+    sizeOpts.querySelectorAll('.product-page__option-btn').forEach(function(btn) {
+      var sizeVal = (btn.dataset.value || '').trim();
+      var available = false;
+      for (var i = 0; i < variants.length; i++) {
+        var vr = variants[i];
+        if (!vr.available) continue;
+        var vColor = (vr['option' + colorOptionIndex] || '').toLowerCase().trim();
+        var vSize = (vr['option' + sizeOptionIndex] || '').trim();
+        if (colorOptionIndex && vColor !== colorKey) continue;
+        if (vSize === sizeVal) {
+          available = true;
+          break;
+        }
+      }
+      btn.dataset.available = available;
+      btn.disabled = !available;
+      btn.classList.toggle('is-sold-out', !available);
+      var txt = btn.querySelector('.product-page__option-btn-text');
+      if (txt) txt.textContent = (available ? '' : '– ') + sizeVal + (available ? '' : ' –');
+      btn.setAttribute('aria-label', sizeVal + (available ? '' : ' - Sold out'));
+    });
+  }
+
+  function scrollCarouselToSlide(slideEl) {
+    if (!mainCarousel || !slideEl) return;
+    mainCarousel.scrollTo({ left: slideEl.offsetLeft, behavior: 'smooth' });
+  }
+
+  function syncActiveThumb(index) {
+    document.querySelectorAll('.product-media-slide.is-active').forEach(function(s) { s.classList.remove('is-active'); });
+    var thumb = thumbsContainer && thumbsContainer.querySelector('.product-media-slide[data-index="' + index + '"]');
+    if (thumb) thumb.classList.add('is-active');
+  }
+
+  function filterMediaByColor(color) {
+    var slides = document.querySelectorAll('.product-media-slide');
+    var target = (color || '').toLowerCase().trim();
+    var firstVisible = null;
+
+    slides.forEach(function(slide) {
+      var slideColor = (slide.dataset.color || '').toLowerCase().trim();
+      var show = !target ? true : (!slideColor || slideColor === target);
+      slide.style.display = show ? '' : 'none';
+      if (show && !firstVisible) firstVisible = slide;
+    });
+
+    if (firstVisible) {
+      scrollCarouselToSlide(firstVisible);
+      syncActiveThumb(parseInt(firstVisible.dataset.index, 10));
+    }
+  }
+
+  function setVariant(v) {
+    form.querySelector('#variant-id').value = v.id;
+    var btn = form.querySelector('#add-to-cart-btn');
+    btn.disabled = !v.available;
+    btn.textContent = v.available ? '{{ "products.add_to_cart" | t | default: "Add to Bag" }}' : '{{ "products.sold_out" | t | default: "Sold Out" }}';
+    filterMediaByColor(getColorFromVariant(v));
+    if (mainCarousel && v.featured_image) {
+      var featId = v.featured_image.id || (v.featured_image.id && v.featured_image.id.toString());
+      var slide = mainCarousel.querySelector('.product-media-slide[data-image-id="' + featId + '"]');
+      if (!slide && v.featured_image.id) slide = mainCarousel.querySelector('.product-media-slide[data-image-id="' + v.featured_image.id + '"]');
+      if (slide && slide.style.display !== 'none') scrollCarouselToSlide(slide);
+    }
+    document.querySelectorAll('.product-page__option-value').forEach(function(span) {
+      var pos = parseInt(span.dataset.option, 10);
+      var val = v['option' + pos];
+      if (val) span.textContent = val;
+    });
+  }
+
+  form.querySelectorAll('.product-page__option-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (btn.disabled) return;
+      var opt = parseInt(btn.dataset.option, 10);
+      var val = (btn.dataset.value || '').trim();
+      var isColorClick = (opt === colorOptionIndex && colorOptionIndex);
+      form.querySelectorAll('.product-page__option-btn[data-option="' + opt + '"]').forEach(function(b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      if (isColorClick) updateSizeAvailabilityForColor(val);
+      var opts = {};
+      form.querySelectorAll('.product-page__option-btn.is-active').forEach(function(b) {
+        var o = parseInt(b.dataset.option, 10);
+        opts[o] = (b.dataset.value || '').trim();
+      });
+      var v = variants.find(function(vr) {
+        return (vr.option1 || '').trim() === (opts[1] || '') &&
+               (vr.option2 || '').trim() === (opts[2] || '') &&
+               (vr.option3 || '').trim() === (opts[3] || '');
+      });
+      if (!v && isColorClick && sizeOptionIndex) {
+        var fallback = variants.find(function(vr) {
+          return (vr['option' + colorOptionIndex] || '').trim() === val && vr.available;
+        }) || variants.find(function(vr) {
+          return (vr['option' + colorOptionIndex] || '').trim() === val;
+        });
+        if (fallback) {
+          var newSize = (fallback['option' + sizeOptionIndex] || '').trim();
+          form.querySelectorAll('.product-page__options[data-option-position="' + sizeOptionIndex + '"] .product-page__option-btn').forEach(function(b) {
+            var bVal = (b.dataset.value || '').trim();
+            b.classList.toggle('is-active', bVal === newSize);
+          });
+          opts[sizeOptionIndex] = newSize;
+          v = fallback;
+        }
+      }
+      if (v) setVariant(v);
+    });
+  });
+
+  if (thumbsContainer) {
+    thumbsContainer.querySelectorAll('.product-page__thumb').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        syncActiveThumb(parseInt(btn.dataset.index, 10));
+        if (mainCarousel) {
+          var slide = mainCarousel.querySelector('.product-media-slide[data-index="' + btn.dataset.index + '"]');
+          if (slide) scrollCarouselToSlide(slide);
+        }
+      });
+    });
+  }
+
+  if (mainCarousel) {
+    mainCarousel.addEventListener('scroll', function() {
+      var visible = Array.prototype.filter.call(mainCarousel.querySelectorAll('.product-media-slide'), function(s) { return s.style.display !== 'none'; });
+      if (!visible.length) return;
+      var containerWidth = mainCarousel.offsetWidth;
+      var scrollLeft = mainCarousel.scrollLeft;
+      var idx = Math.round(scrollLeft / containerWidth);
+      idx = Math.max(0, Math.min(idx, visible.length - 1));
+      syncActiveThumb(parseInt(visible[idx].dataset.index, 10));
+    });
+  }
+
+  var initialVariant = variants.find(function(v) { return v.id === {{ product.selected_or_first_available_variant.id }}; });
+  if (initialVariant) setVariant(initialVariant);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Main image: assign a Featured Image to each variant in Product → Variants. For thumb filtering by color, use alt text like: black | front, gray | model (lowercase)."
+    },
+    {
+      "type": "paragraph",
+      "content": "Sizing chart images (shared across categories/variants): use alt text like \"Size guide for [Product Type] - all sizes\" or \"Sizing chart - Tops and Shorts\" so it works for both."
+    }
+  ]
+}
+{% endschema %}

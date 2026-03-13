@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "off-duty-lookbook",
+      "settings": {
+        "show_heading": true,
+        "heading": "As Seen On",
+        "columns": 2
+      },
+      "blocks": {
+        "block_1": { "type": "image", "settings": {} },
+        "block_2": { "type": "image", "settings": {} },
+        "block_3": { "type": "image", "settings": {} },
+        "block_4": { "type": "image", "settings": {} }
+      },
+      "block_order": ["block_1", "block_2", "block_3", "block_4"]
+    }
+  },
+  "order": ["main"]
+}

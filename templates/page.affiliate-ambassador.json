@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "off-duty-affiliate-ambassador",
+      "settings": {
+        "heading": "Affiliate Program",
+        "button_text": "Submit Application"
+      }
+    }
+  },
+  "order": ["main"]
+}

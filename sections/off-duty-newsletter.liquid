@@ -1,0 +1,76 @@
+<section class="newsletter" style="background-color: {{ section.settings.bg_color }};">
+  <div class="page-width newsletter__inner">
+    <h2 class="newsletter__heading">{{ section.settings.heading }}</h2>
+    <p class="newsletter__text">{{ section.settings.text }}</p>
+    {% form 'customer', class: 'newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {% if form.posted_successfully? %}
+        <p class="newsletter__success">{{ section.settings.success_message }}</p>
+      {% else %}
+        <div class="newsletter__fields">
+          <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" class="newsletter__input" required>
+          {% if section.settings.show_phone %}
+            <input type="tel" name="contact[phone]" placeholder="{{ section.settings.phone_placeholder }}" class="newsletter__input newsletter__input--phone">
+          {% endif %}
+          <button type="submit" class="newsletter__submit">{{ section.settings.button_text }}</button>
+        </div>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f5f5f3"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay in the loop"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Get early access to drops, exclusive offers, and 10% off your first order. Subscribe for email and text updates."
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Your email"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "Phone (optional)"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks for subscribing!"
+    }
+  ]
+}
+{% endschema %}
