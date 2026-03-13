@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g @shopify/cli @shopify/theme
-      - run: shopify theme push --theme 176320872612 --nodelete
+      - run: shopify theme push --theme 176344891556 --nodelete
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
           SHOPIFY_FLAG_STORE: offdutyus.myshopify.com
