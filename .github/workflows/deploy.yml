@@ -1,0 +1,19 @@
+# Deploy theme to Shopify when pushing to main
+# Requires: Add SHOPIFY_CLI_THEME_TOKEN in repo Settings > Secrets
+# Get token: shopify auth token --store offdutyus.myshopify.com
+name: Deploy to Shopify
+on:
+  push:
+    branches: [main, master]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @shopify/cli @shopify/theme
+      - run: shopify theme push --theme 176320872612 --nodelete --store offdutyus.myshopify.com
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
