@@ -1,25 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "off-duty-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/66F12D5B-9A25-434C-BB43-CB932BBA226C.png",
+        "subheading": "",
+        "heading": "",
+        "text": "",
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_2_text": "",
+        "button_2_link": "",
+        "overlay_color": "#181818",
+        "overlay_opacity": 30,
+        "height": 85
+      }
     },
     "editorial": {
       "type": "off-duty-editorial",
-      "settings": {}
+      "settings": {
+        "link": "",
+        "subheading": "Editorial",
+        "heading": "Spring 2026 Lookbook"
+      }
     },
     "featured": {
       "type": "off-duty-featured-collection",
       "settings": {
+        "collection": "",
         "heading": "Popular",
         "products_to_show": 4,
-        "columns": 4
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_text": "View All"
       }
     },
     "newsletter": {
       "type": "off-duty-newsletter",
-      "settings": {}
+      "settings": {
+        "bg_color": "#f5f5f3",
+        "heading": "Stay in the loop",
+        "text": "Get early access to drops, exclusive offers, and 10% off your first order. Subscribe for email and text updates.",
+        "email_placeholder": "Your email",
+        "show_phone": true,
+        "phone_placeholder": "Phone (optional)",
+        "button_text": "Subscribe",
+        "success_message": "Thanks for subscribing!"
+      }
     }
   },
-  "order": ["hero", "editorial", "featured", "newsletter"]
+  "order": [
+    "hero",
+    "editorial",
+    "featured",
+    "newsletter"
+  ]
 }
