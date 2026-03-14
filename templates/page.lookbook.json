@@ -1,20 +1,83 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "off-duty-lookbook",
+      "blocks": {
+        "block_1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2202.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "block_2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2200.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "block_3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2203.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "block_4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2201.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "image_itabcH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2204.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "image_NyXCT7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2206.png",
+            "caption": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "image_itabcH",
+        "image_NyXCT7"
+      ],
       "settings": {
         "show_heading": true,
         "heading": "As Seen On",
+        "subheading": "",
         "columns": 2
-      },
-      "blocks": {
-        "block_1": { "type": "image", "settings": {} },
-        "block_2": { "type": "image", "settings": {} },
-        "block_3": { "type": "image", "settings": {} },
-        "block_4": { "type": "image", "settings": {} }
-      },
-      "block_order": ["block_1", "block_2", "block_3", "block_4"]
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
