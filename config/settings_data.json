@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "favicon": "shopify://shop_images/favicon-96x96.png",
     "use_okay_font": false,
     "font_body": "work_sans_n4",
     "font_heading": "work_sans_n4",
