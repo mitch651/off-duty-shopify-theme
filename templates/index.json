@@ -36,8 +36,8 @@
     "featured": {
       "type": "off-duty-featured-collection",
       "settings": {
-        "collection": "",
-        "heading": "Popular",
+        "collection": "new-arrivals",
+        "heading": "NEW ARRIVALS",
         "products_to_show": 4,
         "columns": 4,
         "show_view_all": true,
