@@ -43,9 +43,9 @@
         ],
         "settings": {
           "enable": true,
-          "bg_color": "#181818",
-          "text_color": "#ffffff",
-          "separator": "•",
+          "bg_color": "#efefef",
+          "text_color": "#181818",
+          "separator": "",
           "font_size": 10
         }
       },
