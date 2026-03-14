@@ -1,17 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-collection",
-      "settings": {
-        "sidebar_heading": "Collections"
-      },
       "blocks": {
-        "category_1": { "type": "category", "settings": { "heading": "T-Shirts" } },
-        "category_2": { "type": "category", "settings": { "heading": "Hoodies" } },
-        "category_3": { "type": "category", "settings": { "heading": "Sweatpants" } }
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "heading": "T-Shirts",
+            "collection": ""
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "heading": "Hoodies",
+            "collection": ""
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "heading": "Sweatpants",
+            "collection": ""
+          }
+        }
       },
-      "block_order": ["category_1", "category_2", "category_3"]
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3"
+      ],
+      "settings": {
+        "sidebar_heading": "Shop All+",
+        "discover_heading": "Discover",
+        "shop_by_heading": "Shop By",
+        "sidebar_menu": ""
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
