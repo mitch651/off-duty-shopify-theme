@@ -31,14 +31,35 @@
       "off-duty-announcement-bar": {
         "type": "off-duty-announcement-bar",
         "blocks": {
+          "text_et3PdP": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
+          "text_EEqi9d": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
+          "text_d88Dnb": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
           "off-duty-announcement-bar-0": {
             "type": "text",
             "settings": {
-              "text": "Edit here"
+              "text": "FREE SHIPPING ON ORDERS $150+"
             }
           }
         },
         "block_order": [
+          "text_et3PdP",
+          "text_EEqi9d",
+          "text_d88Dnb",
           "off-duty-announcement-bar-0"
         ],
         "settings": {
