@@ -31,6 +31,12 @@
       "off-duty-announcement-bar": {
         "type": "off-duty-announcement-bar",
         "blocks": {
+          "text_DF8qaw": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
           "text_QiMm9P": {
             "type": "text",
             "settings": {
@@ -57,6 +63,7 @@
           }
         },
         "block_order": [
+          "text_DF8qaw",
           "text_QiMm9P",
           "text_ceC7pB",
           "text_CWX7Y8",
@@ -64,7 +71,7 @@
         ],
         "settings": {
           "enable": true,
-          "bg_color": "#efefef",
+          "bg_color": "#f2f2f2",
           "text_color": "#000000",
           "separator": "",
           "font_size": 8
