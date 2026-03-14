@@ -11,51 +11,16 @@
   "sections": {
     "main": {
       "type": "main-collection",
-      "blocks": {
-        "category_1": {
-          "type": "category",
-          "settings": {
-            "heading": "T-Shirts",
-            "collection": "tees"
-          }
-        },
-        "category_2": {
-          "type": "category",
-          "settings": {
-            "heading": "Hoodies",
-            "collection": "hoodies"
-          }
-        },
-        "category_3": {
-          "type": "category",
-          "settings": {
-            "heading": "Sweatpants",
-            "collection": "sweatpants"
-          }
-        },
-        "category_jjTir9": {
-          "type": "category",
-          "settings": {
-            "heading": "Shorts",
-            "collection": "shorts"
-          }
-        }
-      },
-      "block_order": [
-        "category_1",
-        "category_2",
-        "category_3",
-        "category_jjTir9"
-      ],
       "settings": {
-        "sidebar_heading": "more options",
-        "discover_heading": "Discover",
-        "shop_by_heading": "Shop By",
-        "sidebar_menu": ""
-      }
+        "sidebar_heading": "Collections"
+      },
+      "blocks": {
+        "category_1": { "type": "category", "settings": { "heading": "T-Shirts" } },
+        "category_2": { "type": "category", "settings": { "heading": "Hoodies" } },
+        "category_3": { "type": "category", "settings": { "heading": "Sweatpants" } }
+      },
+      "block_order": ["category_1", "category_2", "category_3"]
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

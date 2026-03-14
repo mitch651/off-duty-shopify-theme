@@ -11,13 +11,8 @@
   "sections": {
     "main": {
       "type": "off-duty-page",
-      "settings": {
-        "show_heading": true,
-        "heading": ""
-      }
+      "settings": {}
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

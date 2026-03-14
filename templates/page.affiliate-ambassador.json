@@ -12,27 +12,10 @@
     "main": {
       "type": "off-duty-affiliate-ambassador",
       "settings": {
-        "show_heading": true,
-        "heading": "JOIN THE OFF DUTY FAMILY",
-        "intro": "",
-        "subtext": "",
-        "label_name": "Full Name",
-        "label_email": "Email",
-        "label_phone": "Phone Number",
-        "label_social": "Social Media Handles",
-        "label_other_social": "Other",
-        "label_message": "Message",
-        "placeholder_name": "",
-        "placeholder_email": "",
-        "placeholder_phone": "",
-        "placeholder_other_social": "",
-        "placeholder_message": "",
-        "button_text": "Submit Application",
-        "success_message": "Thank you! Your application has been submitted."
+        "heading": "Affiliate Program",
+        "button_text": "Submit Application"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

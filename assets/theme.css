@@ -1003,6 +1003,18 @@ body {
   padding: 48px 0 64px;
 }
 
+.cart.page-width {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .cart.page-width {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
 .cart__title {
   font-size: 12px;
   letter-spacing: 0.25em;
