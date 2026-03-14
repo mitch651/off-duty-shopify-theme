@@ -32,12 +32,20 @@
             "heading": "Sweatpants",
             "collection": "sweatpants"
           }
+        },
+        "category_ra3rTA": {
+          "type": "category",
+          "settings": {
+            "heading": "SHORTS",
+            "collection": "shorts"
+          }
         }
       },
       "block_order": [
         "category_1",
         "category_2",
-        "category_3"
+        "category_3",
+        "category_ra3rTA"
       ],
       "settings": {
         "sidebar_heading": "Collections",
