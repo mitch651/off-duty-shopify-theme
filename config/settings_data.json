@@ -31,6 +31,24 @@
       "off-duty-announcement-bar": {
         "type": "off-duty-announcement-bar",
         "blocks": {
+          "text_QiMm9P": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
+          "text_ceC7pB": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
+          "text_CWX7Y8": {
+            "type": "text",
+            "settings": {
+              "text": ""
+            }
+          },
           "text_DbeTyD": {
             "type": "text",
             "settings": {
@@ -39,13 +57,16 @@
           }
         },
         "block_order": [
+          "text_QiMm9P",
+          "text_ceC7pB",
+          "text_CWX7Y8",
           "text_DbeTyD"
         ],
         "settings": {
           "enable": true,
-          "bg_color": "#e6e6e6",
+          "bg_color": "#efefef",
           "text_color": "#000000",
-          "separator": "•",
+          "separator": "",
           "font_size": 8
         }
       },
