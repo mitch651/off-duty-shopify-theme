@@ -26,7 +26,71 @@
     "button_padding_x": 32,
     "section_padding_y": 60,
     "section_padding_x": 24,
-    "page_width": 1400
+    "page_width": 1400,
+    "sections": {
+      "off-duty-announcement-bar": {
+        "type": "off-duty-announcement-bar",
+        "blocks": {
+          "off-duty-announcement-bar-0": {
+            "type": "text",
+            "settings": {
+              "text": "Edit here"
+            }
+          }
+        },
+        "block_order": [
+          "off-duty-announcement-bar-0"
+        ],
+        "settings": {
+          "enable": true,
+          "bg_color": "#181818",
+          "text_color": "#ffffff",
+          "separator": "•",
+          "font_size": 10
+        }
+      },
+      "off-duty-header": {
+        "type": "off-duty-header",
+        "settings": {
+          "menu": "main-menu",
+          "logo_text": "Off Duty",
+          "logo_image_top": "shopify://shop_images/UPDATED_OD_LOGO.png",
+          "logo_image": "shopify://shop_images/EE75F58B_2029_4334_B482_C4FA0347E536_1__c41371ca9570_ffcc8cf5-6e11-40f8-b8ad-2c56cda554be.png",
+          "location_text": "Los Angeles, CA",
+          "privacy_policy_url": "",
+          "link_client_services": "",
+          "link_legal": "",
+          "instagram_url": "",
+          "menu_label": "Menu",
+          "close_label": "Close",
+          "search_label": "Search",
+          "cart_label": "Cart",
+          "header_opacity_top": 75,
+          "header_opacity_scrolled": 95
+        }
+      },
+      "off-duty-footer": {
+        "type": "off-duty-footer",
+        "settings": {
+          "newsletter_heading": "Newsletter",
+          "newsletter_text": "Join for early access and 10% off your first order.",
+          "newsletter_button": "Subscribe",
+          "shipping_url": "",
+          "returns_url": "",
+          "privacy_url": "",
+          "terms_url": "",
+          "about_url": "",
+          "contact_url": "",
+          "copyright_text": "All rights reserved.",
+          "instagram": "",
+          "instagram_handle": "",
+          "instagram_heading": "Follow Us",
+          "twitter": "",
+          "designer_credit": "Designed by MLC"
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": [
     {
