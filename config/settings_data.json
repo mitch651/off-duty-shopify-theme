@@ -31,22 +31,22 @@
       "off-duty-announcement-bar": {
         "type": "off-duty-announcement-bar",
         "blocks": {
-          "off-duty-announcement-bar-0": {
+          "text_DbeTyD": {
             "type": "text",
             "settings": {
-              "text": "Edit here"
+              "text": "free shipping on orders $150+"
             }
           }
         },
         "block_order": [
-          "off-duty-announcement-bar-0"
+          "text_DbeTyD"
         ],
         "settings": {
           "enable": true,
-          "bg_color": "#181818",
-          "text_color": "#ffffff",
+          "bg_color": "#e6e6e6",
+          "text_color": "#000000",
           "separator": "•",
-          "font_size": 10
+          "font_size": 8
         }
       },
       "off-duty-header": {
