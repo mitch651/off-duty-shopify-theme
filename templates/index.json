@@ -49,10 +49,10 @@
       "settings": {
         "bg_color": "#f5f5f3",
         "heading": "Stay in the loop",
-        "text": "Get early access to drops, exclusive offers, and 10% off your first order. Subscribe for email and text updates.",
+        "text": "Get 10% off your first order, early access to drops + exclusive offers.",
         "email_placeholder": "Your email",
         "show_phone": true,
-        "phone_placeholder": "Phone (optional)",
+        "phone_placeholder": "Phone",
         "button_text": "Subscribe",
         "success_message": "Thanks for subscribing!"
       }
