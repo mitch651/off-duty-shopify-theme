@@ -15,26 +15,9 @@
         "show_heading": true,
         "heading": ""
       }
-    },
-    "1773454197e914d6ca": {
-      "type": "apps",
-      "blocks": {
-        "essential_trust_badges_app_block_nTAwN4": {
-          "type": "shopify://apps/essential-trust-badges/blocks/app-block/0ff65b25-07e1-408e-950f-f54dd3d1751b",
-          "settings": {
-            "banner_display": "all",
-            "banner_id": "8493fa60-9c57-48bd-bb94-609695ef5135"
-          }
-        }
-      },
-      "block_order": [
-        "essential_trust_badges_app_block_nTAwN4"
-      ],
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "1773454197e914d6ca"
+    "main"
   ]
 }
