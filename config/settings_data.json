@@ -64,7 +64,7 @@
         ],
         "settings": {
           "enable": true,
-          "bg_color": "#efefef",
+          "bg_color": "#f2f2f2",
           "text_color": "#181818",
           "separator": "",
           "font_size": 10
