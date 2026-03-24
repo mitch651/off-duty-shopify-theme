@@ -12,6 +12,14 @@
     "main": {
       "type": "off-duty-lookbook",
       "blocks": {
+        "image_iFQcD3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4FC96264-64C1-4D1E-9387-3E55ABE96D82.jpg",
+            "caption": "",
+            "link": ""
+          }
+        },
         "block_1": {
           "type": "image",
           "settings": {
@@ -62,6 +70,7 @@
         }
       },
       "block_order": [
+        "image_iFQcD3",
         "block_1",
         "block_2",
         "block_3",
