@@ -12,12 +12,12 @@
     "hero": {
       "type": "off-duty-hero",
       "settings": {
-        "image": "shopify://shop_images/lifestyle_048.jpg",
-        "subheading": "Premium essentials for after the work is done",
-        "heading": "–",
-        "text": "\"Built for when the day is yours\"",
-        "button_1_text": "",
-        "button_1_link": "",
+        "image": "shopify://shop_images/44779A11-77B0-4A2A-ADC9-D8919812C0E3_2.png",
+        "subheading": "Premium essentials for after the work is done.",
+        "heading": "The other side of locked in.",
+        "text": "",
+        "button_1_text": "Shop the Sunday Collection",
+        "button_1_link": "shopify://collections/new-arrivals",
         "button_2_text": "",
         "button_2_link": "",
         "overlay_color": "#181818",
