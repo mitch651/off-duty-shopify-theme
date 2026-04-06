@@ -53,7 +53,7 @@
         "email_placeholder": "YOUR EMAIL",
         "show_phone": true,
         "phone_placeholder": "PHONE",
-        "button_text": "Subscribe",
+        "button_text": "Join",
         "success_message": "WELCOME!"
       }
     }
