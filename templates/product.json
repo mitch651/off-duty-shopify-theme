@@ -13,25 +13,27 @@
       "type": "main-product",
       "settings": {}
     },
-    "17755898261de9a747": {
+    "177562941018b2c8d6": {
       "type": "apps",
       "blocks": {
-        "junip_junip_product_summary_MqUrHR": {
-          "type": "shopify://apps/junip/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+        "junip_junip_product_review_qeCw6C": {
+          "type": "shopify://apps/junip/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "product": "{{product}}",
-            "alignment": "center"
+            "title": "",
+            "alignment": "center",
+            "sortOrder": "mostRecent"
           }
         }
       },
       "block_order": [
-        "junip_junip_product_summary_MqUrHR"
+        "junip_junip_product_review_qeCw6C"
       ],
       "settings": {}
     }
   },
   "order": [
     "main",
-    "17755898261de9a747"
+    "177562941018b2c8d6"
   ]
 }
