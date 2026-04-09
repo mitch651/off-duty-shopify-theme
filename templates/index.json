@@ -21,7 +21,7 @@
         "button_2_text": "Shop the Sunday Collection",
         "button_2_link": "shopify://collections/new-arrivals",
         "overlay_color": "#181818",
-        "overlay_opacity": 40,
+        "overlay_opacity": 45,
         "height": 50
       }
     },
