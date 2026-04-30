@@ -37,8 +37,8 @@
     "featured": {
       "type": "off-duty-featured-collection",
       "settings": {
-        "collection": "shop-all",
-        "heading": "NEW",
+        "collection": "new-arrivals",
+        "heading": "The sunday collection",
         "products_to_show": 8,
         "columns": 4,
         "show_view_all": true,
