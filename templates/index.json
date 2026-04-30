@@ -57,12 +57,51 @@
         "button_text": "Join",
         "success_message": "WELCOME!"
       }
+    },
+    "ss_featured_review_slider_iXH8qL": {
+      "type": "ss-featured-review-slider",
+      "blocks": {
+        "quote_d8JL6r": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"The quality on this sweatsuit is crazy.\"</p><p><em>— Jalen, California</em></p>"
+          }
+        },
+        "quote_6cKWWM": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"</p><p>The postage was incredibly quick and the quality and colours far exceeded what I thought. The pics don't do them justice. Truly unique rugs that I doubt will date anytime soon. I would recommend - beautiful rug and great customer service. </p><p>- Tanya E.</p>"
+          }
+        },
+        "quote_BfXWka": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"</p><p>My husband argued with me saying we didn’t need a new blanket. Once we received this one, he quickly changed his tune. It’s cozy, soft and warm. I love the design and boho vibe it adds to our home. High quality product at an affordable price.</p><p>- Bebe H.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "quote_d8JL6r",
+        "quote_6cKWWM",
+        "quote_BfXWka"
+      ],
+      "name": "SS - Review slider",
+      "settings": {
+        "example": "<div data-review-quote-slider-target></div>",
+        "pagination_color": "#f2f2f2",
+        "bg_color": "#181818",
+        "text_color": "#ffffff",
+        "border_radius": 32,
+        "font_size": 16,
+        "custom_classes": ""
+      }
     }
   },
   "order": [
     "hero",
     "editorial",
     "featured",
-    "newsletter"
+    "newsletter",
+    "ss_featured_review_slider_iXH8qL"
   ]
 }
