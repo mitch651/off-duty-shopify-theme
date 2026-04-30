@@ -25,15 +25,6 @@
         "height": 50
       }
     },
-    "editorial": {
-      "type": "off-duty-editorial",
-      "settings": {
-        "image": "shopify://shop_images/DSC00079.jpg",
-        "link": "shopify://pages/about",
-        "subheading": "For the ones who never really clock out.",
-        "heading": ""
-      }
-    },
     "featured": {
       "type": "off-duty-featured-collection",
       "settings": {
@@ -43,6 +34,15 @@
         "columns": 4,
         "show_view_all": true,
         "view_all_text": "View All"
+      }
+    },
+    "editorial": {
+      "type": "off-duty-editorial",
+      "settings": {
+        "image": "shopify://shop_images/DSC00079.jpg",
+        "link": "shopify://pages/about",
+        "subheading": "For the ones who never really clock out.",
+        "heading": ""
       }
     },
     "newsletter": {
@@ -61,8 +61,8 @@
   },
   "order": [
     "hero",
-    "editorial",
     "featured",
+    "editorial",
     "newsletter"
   ]
 }
