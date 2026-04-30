@@ -49,8 +49,8 @@
       "type": "off-duty-newsletter",
       "settings": {
         "bg_color": "#f5f5f3",
-        "heading": "Stay in the loop",
-        "text": "Early access. New drops. Nothing you didn’t ask for.",
+        "heading": "THE LOUNGE",
+        "text": "Early access. First to know. Nothing you didn’t ask for.",
         "email_placeholder": "YOUR EMAIL",
         "show_phone": true,
         "phone_placeholder": "PHONE",
