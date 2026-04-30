@@ -12,13 +12,13 @@
     "hero": {
       "type": "off-duty-hero",
       "settings": {
-        "image": "shopify://shop_images/66F12D5B-9A25-434C-BB43-CB932BBA226C.png",
-        "subheading": "The uniform you choose.",
+        "image": "shopify://shop_images/2.jpg",
+        "subheading": "",
         "heading": "",
         "text": "",
         "button_1_text": "",
         "button_1_link": "",
-        "button_2_text": "Shop the Sunday Collection",
+        "button_2_text": "",
         "button_2_link": "shopify://collections/new-arrivals",
         "overlay_color": "#181818",
         "overlay_opacity": 45,
