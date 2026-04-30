@@ -121,11 +121,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "2118589882331710876": {
-        "type": "shopify://apps/essential-trust-badges/blocks/app-embed/0ff65b25-07e1-408e-950f-f54dd3d1751b",
-        "disabled": false,
-        "settings": {}
-      },
       "6544682535036668446": {
         "type": "shopify://apps/pumper-bundles/blocks/app-embed/0856870d-2aca-4b1e-a662-cf1797f61270",
         "disabled": false,
@@ -158,9 +153,9 @@
           "enablePreviewMode": true
         }
       },
-      "pagefly-page-builder": {
-        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
-        "disabled": false,
+      "2118589882331710876": {
+        "type": "shopify://apps/essential-trust-badges/blocks/app-embed/0ff65b25-07e1-408e-950f-f54dd3d1751b",
+        "disabled": true,
         "settings": {}
       }
     }
