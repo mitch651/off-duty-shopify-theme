@@ -25,6 +25,15 @@
         "height": 50
       }
     },
+    "editorial": {
+      "type": "off-duty-editorial",
+      "settings": {
+        "image": "shopify://shop_images/DSC00039.jpg",
+        "link": "",
+        "subheading": "",
+        "heading": ""
+      }
+    },
     "featured": {
       "type": "off-duty-featured-collection",
       "settings": {
@@ -34,15 +43,6 @@
         "columns": 4,
         "show_view_all": true,
         "view_all_text": "View All"
-      }
-    },
-    "editorial": {
-      "type": "off-duty-editorial",
-      "settings": {
-        "image": "shopify://shop_images/DSC00257.jpg",
-        "link": "",
-        "subheading": "",
-        "heading": ""
       }
     },
     "newsletter": {
@@ -61,8 +61,8 @@
   },
   "order": [
     "hero",
-    "featured",
     "editorial",
+    "featured",
     "newsletter"
   ]
 }
