@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "177562941018b2c8d6": {
+      "type": "apps",
+      "blocks": {
+        "junip_junip_product_review_qeCw6C": {
+          "type": "shopify://apps/junip/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}",
+            "title": "REVIEWS",
+            "alignment": "center",
+            "sortOrder": "mostRecent"
+          }
+        }
+      },
+      "block_order": [
+        "junip_junip_product_review_qeCw6C"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "177562941018b2c8d6"
+  ]
+}

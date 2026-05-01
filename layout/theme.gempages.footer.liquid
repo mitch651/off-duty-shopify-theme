@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Theme sync test: Mar 1 2025 -->
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  {% if settings.favicon != blank %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" sizes="32x32">
+  {% endif %}
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  {%- if settings.use_okay_font -%}
+    <style>
+      @font-face {
+        font-family: "Okay";
+        src: url("{{ 'okay.woff2' | asset_url }}") format("woff2"),
+             url("{{ 'okay.woff' | asset_url }}") format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+  {%- endif -%}
+
+  <style>
+    :root {
+      --font-body: "Inter", system-ui, -apple-system, sans-serif;
+      --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+      --font-size-base: {{ settings.font_size_base | default: 16 }}px;
+      --font-size-heading: {{ settings.font_size_heading | default: 32 }}px;
+      --font-weight-normal: {{ settings.font_weight_normal | default: 400 }};
+      --font-weight-medium: {{ settings.font_weight_medium | default: 500 }};
+      --font-weight-bold: {{ settings.font_weight_bold | default: 700 }};
+      --color-bg: {{ settings.color_background | default: '#ffffff' }};
+      --color-text: {{ settings.color_foreground | default: '#181818' }};
+      --color-accent: {{ settings.color_accent | default: '#181818' }};
+      --header-scrolled-opacity: {{ settings.header_scrolled_opacity | divided_by: 100.0 }};
+      --button-border-radius: {{ settings.button_border_radius }}px;
+      --button-padding-y: {{ settings.button_padding_y }}px;
+      --button-padding-x: {{ settings.button_padding_x }}px;
+      --section-padding-y: {{ settings.section_padding_y }}px;
+      --section-padding-x: {{ settings.section_padding_x }}px;
+      --page-width: {{ settings.page_width }}px;
+    }
+  </style>
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <link rel="preload" href="{{ 'theme.js' | asset_url }}" as="script">
+</head>
+<body class="template-{{ template.name }}">
+  <div class="header-wrapper">
+    <div style="display:none"> {% section 'off-duty-announcement-bar' %} </div>
+    <div style="display:none"> {% section 'off-duty-header' %} </div>
+  </div>
+  <main>
+    {{ content_for_layout }}
+  </main>
+  {% section 'off-duty-footer' %}
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>

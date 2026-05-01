@@ -8,6 +8,23 @@
  * ------------------------------------------------------------
  */
 {
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "update": "Update",
+      "checkout": "Checkout",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping"
+    }
+  },
+  "collections": {
+    "all": "Shop All",
+    "products": "products",
+    "categories": "Categories",
+    "empty": "No products in this collection yet."
+  },
   "general": {
     "404": {
       "title": "Page not found",
@@ -28,29 +45,6 @@
       "placeholder": "Search...",
       "submit": "Search",
       "no_results": "No results found."
-    }
-  },
-  "products": {
-    "shop": "Shop",
-    "add_to_cart": "Add to Bag",
-    "sold_out": "Sold Out",
-    "view_product": "View Product"
-  },
-  "collections": {
-    "all": "Shop All",
-    "products": "products",
-    "categories": "Categories",
-    "empty": "No products in this collection yet."
-  },
-  "cart": {
-    "general": {
-      "title": "Cart",
-      "remove": "Remove",
-      "subtotal": "Subtotal",
-      "update": "Update",
-      "checkout": "Checkout",
-      "empty": "Your cart is empty.",
-      "continue_shopping": "Continue shopping"
     }
   },
   "pagefly": {
@@ -96,6 +90,58 @@
       "signup_form_email_label": "Email",
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
+    }
+  },
+  "products": {
+    "shop": "Shop",
+    "add_to_cart": "Add to Bag",
+    "sold_out": "Sold Out",
+    "view_product": "View Product"
+  },
+  "gempages": {
+    "Carousel": {
+      "no_slider": "No Slider"
+    },
+    "CarouselV3": {
+      "no_slider": "No Slider"
+    },
+    "Newsletter": {
+      "err_msg_default": "Can’t send email. Please try again later.",
+      "success_msg_default": "Thanks for subscribing"
+    },
+    "IconListV2": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconList": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconListHoz": {
+      "icons_not_found": "Icons not found"
+    },
+    "Product": {
+      "product_not_found": "Product not found"
+    },
+    "ProductList": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductListV3": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductTitle": {
+      "product_not_found": "Product Not Found"
+    },
+    "ProductVariants": {
+      "please_select": "Please select an option"
+    },
+    "StockCounter": {
+      "let_buy_now": "<mark>HURRY!</mark> LET BUY NOW"
+    },
+    "Breadcrumb": {
+      "home": "Home"
     }
   }
 }
