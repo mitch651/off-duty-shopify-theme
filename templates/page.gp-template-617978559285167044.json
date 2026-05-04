@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_section_617978628390519489": {
+      "settings": {
+        "checksum": "e8dec094845814074eb73ba5481ee9db5803c66f20623eaa39c38e7aba615b88_1_1_1_0__1",
+        "gg11ndXhT2__text": "<p>YOUTUBE</p>",
+        "gg1dWXuNlef_label": "SUBMIT APPLICATION",
+        "gg3Tex3hLSr_placeholder": "your@email.com",
+        "gg5omUKz0AF_placeholder": "Channel or URL",
+        "gg8aPPWHcOy_placeholder": "Tell us about yourself and why you want to join...",
+        "ggBE4ur4YfO_text": "<p>INSTAGRAM</p>",
+        "ggE3feazhKr_errorMessage": "Can’t send email. Please try again later.",
+        "ggE3feazhKr_successMessage": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "ggETgiiY5MF_placeholder": "@handle",
+        "ggUXv3cVkJj_text": "THE COLLECTIVE APPLICATION",
+        "ggVTIXRAQof_placeholder": "@handle",
+        "ggdItUGmKzh_text": "<p>TIK TOK</p>",
+        "ggdLUJzV8MB_text": "<p>OTHER</p>",
+        "gggGbM0tFUG_placeholder": "@handle or profile url",
+        "ggl0ITTV36E_text": "<p>EMAIL</p>",
+        "gglfhrGyitI_text": "<p>MESSAGE</p>",
+        "ggobj_Fj5va_placeholder": "Your Name",
+        "ggpMCPJNc0u_placeholder": "Your Phone Number",
+        "ggsJQcbyW-w_text": "<p>PHONE</p>",
+        "ggtekshZ-i9_text": "<p>NAME</p>",
+        "section_preload": "true"
+      },
+      "type": "gp-section-617978628390519489"
+    }
+  },
+  "order": [
+    "gp_section_617978628390519489"
+  ]
+}
