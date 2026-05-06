@@ -101,8 +101,8 @@
       "off-duty-footer": {
         "type": "off-duty-footer",
         "settings": {
-          "newsletter_heading": "Newsletter",
-          "newsletter_text": "Join for early access and 10% off your first order.",
+          "newsletter_heading": "THE LOUNGE",
+          "newsletter_text": "",
           "newsletter_button": "Subscribe",
           "shipping_url": "",
           "returns_url": "",
